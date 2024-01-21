@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexturedQuadApp", "TexturedQuadApp\TexturedQuadApp.csproj", "{56A9D832-D126-4E8B-BED1-A24F5B2F0A8B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Extensions.Canvas", "Blazor.Extensions.Canvas\src\Blazor.Extensions.Canvas\Blazor.Extensions.Canvas.csproj", "{9B27EAF5-CA95-45B9-980B-DBCE49EE58C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.Extensions.Canvas.JS", "Blazor.Extensions.Canvas\src\Blazor.Extensions.Canvas.JS\Blazor.Extensions.Canvas.JS.csproj", "{1700154C-A18D-4257-9A5E-7E2803E69FF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56A9D832-D126-4E8B-BED1-A24F5B2F0A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A9D832-D126-4E8B-BED1-A24F5B2F0A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A9D832-D126-4E8B-BED1-A24F5B2F0A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A9D832-D126-4E8B-BED1-A24F5B2F0A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B27EAF5-CA95-45B9-980B-DBCE49EE58C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B27EAF5-CA95-45B9-980B-DBCE49EE58C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B27EAF5-CA95-45B9-980B-DBCE49EE58C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B27EAF5-CA95-45B9-980B-DBCE49EE58C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1700154C-A18D-4257-9A5E-7E2803E69FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1700154C-A18D-4257-9A5E-7E2803E69FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1700154C-A18D-4257-9A5E-7E2803E69FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1700154C-A18D-4257-9A5E-7E2803E69FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AF55F94-0390-4253-8C89-3954CCE41463}
+	EndGlobalSection
+EndGlobal
