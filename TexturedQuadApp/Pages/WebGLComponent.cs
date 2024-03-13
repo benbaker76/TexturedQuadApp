@@ -92,6 +92,8 @@ namespace TexturedQuadApp.Pages
         {
             var imageStream = await _httpClient.GetStreamAsync($"/images/{imagePath}");
 
+            Console.WriteLine($"/images/{imagePath}");
+
             using (var skBitmap = SKBitmap.Decode(imageStream))
             {
                 var texture = await this._context.CreateTextureAsync();
