@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
 
 namespace TexturedQuadApp.Pages
 {
@@ -20,23 +21,6 @@ namespace TexturedQuadApp.Pages
         [Inject]
         private HttpClient _httpClient { get; set; }
 
-        private const string VS_SOURCE = "attribute vec3 aPos;" +
-                                         "attribute vec2 aTexCoord;" +
-                                         "varying vec2 vTexCoord;" +
-
-                                         "void main() {" +
-                                            "gl_Position = vec4(aPos, 1.0);" +
-                                            "vTexCoord = aTexCoord;" +
-                                         "}";
-
-        private const string FS_SOURCE = "precision mediump float;" +
-                                         "varying vec2 vTexCoord;" +
-                                         "uniform sampler2D uTexture;" +
-
-                                         "void main() {" +
-                                            "gl_FragColor = texture2D(uTexture, vTexCoord);" +
-                                         "}";
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             this._context = await this._canvasReference.CreateWebGLAsync(new WebGLContextAttributes
@@ -47,7 +31,10 @@ namespace TexturedQuadApp.Pages
             await this._context.ClearColorAsync(0, 0, 0, 1);
             await this._context.ClearAsync(BufferBits.COLOR_BUFFER_BIT);
 
-            var program = await this.InitProgramAsync(this._context, VS_SOURCE, FS_SOURCE);
+            string vsSource = await _httpClient.GetStringAsync("/shaders/default.vs");
+            string fsSource = await _httpClient.GetStringAsync("/shaders/default.fs");
+
+            var program = await this.InitProgramAsync(this._context, vsSource, fsSource);
 
             var vertexBuffer = await this._context.CreateBufferAsync();
             await this._context.BindBufferAsync(BufferType.ARRAY_BUFFER, vertexBuffer);
@@ -71,7 +58,7 @@ namespace TexturedQuadApp.Pages
             await this._context.EnableVertexAttribArrayAsync(1);
 
             // Load texture
-            var texture = await LoadTextureAsync("blazor.png");
+            var texture = await LoadTextureAsync("/images/blazor.png");
 
             // Bind the texture
             await this._context.BindTextureAsync(TextureType.TEXTURE_2D, texture);
@@ -90,9 +77,7 @@ namespace TexturedQuadApp.Pages
 
         private async Task<WebGLTexture> LoadTextureAsync(string imagePath)
         {
-            var imageStream = await _httpClient.GetStreamAsync($"/images/{imagePath}");
-
-            Console.WriteLine($"/images/{imagePath}");
+            var imageStream = await _httpClient.GetStreamAsync(imagePath);
 
             using (var skBitmap = SKBitmap.Decode(imageStream))
             {
