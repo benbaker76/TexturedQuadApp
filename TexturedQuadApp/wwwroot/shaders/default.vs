@@ -1,3 +1,4 @@
+#version 300 es
 attribute vec3 aPos;
 attribute vec2 aTexCoord;
 varying vec2 vTexCoord;
