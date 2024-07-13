@@ -1,9 +1,11 @@
 #version 300 es
-attribute vec3 aPos;
-attribute vec2 aTexCoord;
-varying vec2 vTexCoord;
+
+in vec3 aPos;
+in vec2 aTexCoord;
+
+out vec2 vUV;
 
 void main() {
     gl_Position = vec4(aPos, 1.0);
-    vTexCoord = aTexCoord;
+    vUV = aTexCoord;
 }
